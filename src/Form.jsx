@@ -2,10 +2,6 @@ import React from 'react'
 import './Form.css'
 import { useState } from 'react'
 const Form = () => {
-    var fname_inc = 0;
-    var fname_inc = 0;
-    var fname_inc = 0;
-    var fname_inc = 0;
     const [fname, setFname] = useState('')
     const [lname, setLname] = useState('')
     const [email, setEmail] = useState('')
@@ -20,12 +16,35 @@ const Form = () => {
                 console.log("correct");
                 fname_inc++;
             }
+        })
+        if (fname_inc > 0) {
+            var a = document.getElementById('wrong1')
+            a.style.display = 'inline'
         }
-        )
+        else {
+            var a = document.getElementById('wrong1')
+            a.style.display = 'none'
+        }
     }
     function updateLname(e) {
+        var lname_inc = 0;
         console.log(e.target.value);
         setLname(e.target.value);
+        var a = lname;
+        a.split("").forEach(ch => {
+            if (!((ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z') || (ch == 32))) {
+                console.log("correct");
+                lname_inc++;
+            }
+        })
+        if (lname_inc > 0) {
+            var a = document.getElementById('wrong2')
+            a.style.display = 'inline'
+        }
+        else {
+            var a = document.getElementById('wrong2')
+            a.style.display = 'none'
+        }
     }
     function updateEmail(e) {
         console.log(e.target.value);
@@ -51,11 +70,11 @@ const Form = () => {
                     {/* <!-- Firstname and Lastname --> */}
                     <div className="horizontal-group">
                         <div className="form-group left">
-                            <label htmlFor="firstname" className="label-title">First name *</label>
+                            <label htmlFor="firstname" className="label-title">First name *<span id='wrong1'>Given input is invalid</span></label>
                             <input type="text" name="firstname" className="form-input" placeholder="Enter your first name" required="required" value={fname} onChange={updateFname} />
                         </div>
                         <div className="form-group right">
-                            <label htmlFor="lastname" className="label-title">Last name</label>
+                            <label htmlFor="lastname" className="label-title">Last name<span id='wrong2'>Given input is invalid</span></label>
                             <input type="text" name="lastname" className="form-input" placeholder="Enter your last name" value={lname} onChange={updateLname} />
                         </div>
                     </div>
@@ -74,7 +93,7 @@ const Form = () => {
                         </div>
                         <div className="form-group right">
                             <label htmlFor="confirm-password" className="label-title">Profile image</label>
-                            <input type="password" className="form-input" id="confirm-password" placeholder="Attach your image" required="required" />
+                            <input type="file" id="confirm-password" required="required" />
                         </div>
                     </div>
                     <button type="submit" className="btn">Submit</button>

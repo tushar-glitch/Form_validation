@@ -45,6 +45,26 @@ body {
     color: #666;
 }
 
+#wrong1{
+    font-size: 0.75rem;
+    color: red;
+    display: none;
+}
+#wrong2{
+    font-size: 0.75rem;
+    color: red;
+    display: none;
+}
+#wrong3{
+    font-size: 0.75rem;
+    color: red;
+    display: none;
+}
+#wrong4{
+    font-size: 0.75rem;
+    color: red;
+    display: none;
+}
 .form-group {
     margin-bottom: 20px;
 }
@@ -137,7 +157,8 @@ input[type="file"] {
     color: white;
     cursor: pointer;
     position: relative;
-    left: 220px;
+    left: -40px;
+    top: 20px;
 }
 
 .btn:hover {
